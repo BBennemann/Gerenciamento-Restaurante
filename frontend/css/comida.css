@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    width: 100vw;
+
+}
+.box-comida-container {
+    padding: 10px;
+}
+
+.price-and-buy {
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+   .image-food {
+        width: 100vw;
+   }
+    
+}
