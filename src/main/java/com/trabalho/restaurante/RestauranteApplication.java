@@ -13,7 +13,6 @@ public class RestauranteApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//Usem esse como main para testar o código
-		System.out.println("Testa aqui");
+
 	}
 }

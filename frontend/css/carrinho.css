@@ -17,6 +17,10 @@
 body{
     font-family: Arial, sans-serif;
 }
+.home {
+    text-decoration: none;
+    color: var(--primary-color);
+}
 h1 {
     text-align: center;
     font-weight: 500;
