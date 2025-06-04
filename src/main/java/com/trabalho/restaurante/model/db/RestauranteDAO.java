@@ -14,7 +14,7 @@ public class RestauranteDAO {
 
     public int inserir(Restaurante restaurante) throws SQLException {
 
-        String sql = "INSERT INTO restaurante (nome, avaliacao, endereco) VALUES (?,?,?)";
+        String sql = "INSERT INTO restaurante (nome, avaliacao, endereco_id) VALUES (?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, restaurante.getNome());

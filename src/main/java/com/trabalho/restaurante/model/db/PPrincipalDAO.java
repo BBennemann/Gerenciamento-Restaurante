@@ -17,13 +17,15 @@ public class PPrincipalDAO {
 
     public int inserir(PratoPrincipal pratoPrincipal) throws SQLException {
 
-        String sql = "INSERT INTO bebida (nome, preco, acompanhamento, isvegan) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO pratoprincipal (nome, preco, acompanhamento, isvegan, imagens, avaliacao) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, pratoPrincipal.getNome());
         stmt.setString(2, String.valueOf(pratoPrincipal.getPreco()));
         stmt.setString(3, pratoPrincipal.getAcompanhamento());
-        stmt.setString(4, String.valueOf(pratoPrincipal.isVegan()));
+        stmt.setBoolean(4, pratoPrincipal.isVegan());
+        stmt.setString(5, pratoPrincipal.getImagens());
+        stmt.setDouble(6, pratoPrincipal.getAvaliacao());
 
         stmt.executeUpdate();
 

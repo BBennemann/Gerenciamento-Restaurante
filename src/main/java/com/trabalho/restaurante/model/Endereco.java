@@ -26,6 +26,14 @@ public class Endereco {
         this.estado = estado;
         this.cep = cep;
     }
+    public Endereco(String numero, String rua, String bairro, String cidade, String estado, String cep) {
+        this.numero = numero;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+    }
 
     @Override
     public String toString() {

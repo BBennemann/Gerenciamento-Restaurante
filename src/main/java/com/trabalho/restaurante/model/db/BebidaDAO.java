@@ -16,13 +16,15 @@ public class BebidaDAO {
 
     public int inserir(Bebida bebida) throws SQLException {
 
-        String sql = "INSERT INTO bebida (nome, preco, isAcoolica, volume) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO bebida (nome, preco, isAlcoolica, volume, imagens, avaliacao) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, bebida.getNome());
         stmt.setString(2, String.valueOf(bebida.getPreco()));
-        stmt.setString(3, String.valueOf(bebida.isAlcoolica()));
+        stmt.setBoolean(3, bebida.isAlcoolica());
         stmt.setString(4, String.valueOf(bebida.getVolume()));
+        stmt.setString(5, String.valueOf(bebida.getImagens()));
+        stmt.setDouble(6, bebida.getAvaliacao());
 
         stmt.executeUpdate();
 
