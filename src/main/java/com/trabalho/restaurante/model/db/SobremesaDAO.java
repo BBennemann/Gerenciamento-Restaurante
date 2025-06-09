@@ -16,13 +16,15 @@ public class SobremesaDAO {
 
     public int inserir(Sobremesa sobremesa) throws SQLException {
 
-        String sql = "INSERT INTO bebida (nome, preco, temacucar, peso) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO bebida (nome, preco, temacucar, peso, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, sobremesa.getNome());
-        stmt.setString(2, String.valueOf(sobremesa.getPreco()));
-        stmt.setString(3, String.valueOf(sobremesa.isTemAcucar()));
-        stmt.setString(4, String.valueOf(sobremesa.getPeso()));
+        stmt.setDouble(2, sobremesa.getPreco());
+        stmt.setBoolean(3, sobremesa.isTemAcucar());
+        stmt.setDouble(4, sobremesa.getPeso());
+        stmt.setString(5, sobremesa.getImagens());
+        stmt.setDouble(6, sobremesa.getAvaliacao());
 
         stmt.executeUpdate();
 

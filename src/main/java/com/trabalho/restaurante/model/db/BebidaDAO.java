@@ -16,13 +16,15 @@ public class BebidaDAO {
 
     public int inserir(Bebida bebida) throws SQLException {
 
-        String sql = "INSERT INTO bebida (nome, preco, isAcoolica, volume) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO bebida (nome, preco, isAcoolica, volume, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, bebida.getNome());
-        stmt.setString(2, String.valueOf(bebida.getPreco()));
-        stmt.setString(3, String.valueOf(bebida.isAlcoolica()));
-        stmt.setString(4, String.valueOf(bebida.getVolume()));
+        stmt.setDouble(2, bebida.getPreco());
+        stmt.setBoolean(3, bebida.isAlcoolica());
+        stmt.setInt(4, bebida.getVolume());
+        stmt.setString(3, bebida.getImagens());
+        stmt.setDouble(4, bebida.getAvaliacao());
 
         stmt.executeUpdate();
 
@@ -45,7 +47,7 @@ public class BebidaDAO {
             String nome = resultado.getString("nome");
             double preco = resultado.getDouble("preco");
             boolean isAcoolica = resultado.getBoolean("isAlcoolica");
-            String volume = resultado.getString("volume");
+            int volume = resultado.getInt("volume");
             String imagens = resultado.getString("imagens");
             double avaliacao = resultado.getDouble("avaliacao");
 
@@ -67,7 +69,7 @@ public class BebidaDAO {
             String nome = resultado.getString("nome");
             double preco = resultado.getDouble("preco");
             boolean isAlcoolica = resultado.getBoolean("isAlcoolica");
-            String volume = resultado.getString("volume");
+            int volume = resultado.getInt("volume");
             String imagens = resultado.getString("imagens");
             double avaliacao = resultado.getDouble("avaliacao");
 

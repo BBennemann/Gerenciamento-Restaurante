@@ -19,10 +19,10 @@ public class ClienteDAO  {
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, cliente.getNome());
-        stmt.setString(2, String.valueOf(cliente.getIdade()));
+        stmt.setInt(2, cliente.getIdade());
         stmt.setString(3, cliente.getEmail());
         stmt.setString(4, cliente.getSenha());
-        stmt.setString(5, String.valueOf(cliente.getEndereco().getId()));
+        stmt.setInt(5, cliente.getEndereco().getId());
 
         stmt.executeUpdate();
 

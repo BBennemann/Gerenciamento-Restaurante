@@ -7,15 +7,15 @@ import lombok.Setter;
 @Setter
 public class Bebida extends Pratos{
     private boolean isAlcoolica;
-    private String volume;
+    private int volume;
 
-    public Bebida(int id, String nome, double preco, boolean isAlcoolica, String volume, String imagens, double avaliacao) {
+    public Bebida(int id, String nome, double preco, boolean isAlcoolica, int volume, String imagens, double avaliacao) {
         super(id, nome, preco, imagens, avaliacao);
         this.isAlcoolica = isAlcoolica;
         this.volume = volume;
     }
 
-    public Bebida(String nome, double preco, boolean isAlcoolica, String volume, String imagens, double avaliacao) {
+    public Bebida(String nome, double preco, boolean isAlcoolica, int volume, String imagens, double avaliacao) {
         super(nome, preco, imagens, avaliacao);
         this.isAlcoolica = isAlcoolica;
         this.volume = volume;
@@ -26,7 +26,7 @@ public class Bebida extends Pratos{
     public String descricao() {
         return String.format(
                 "%s %s\n" +
-                        "Uma bebida %s, servida em %,.0f ml, perfeita para acompanhar qualquer ocasião com estilo e sabor.\n" +
+                        "Uma bebida %s, servida em %d ml, perfeita para acompanhar qualquer ocasião com estilo e sabor.\n" +
                         "%s\n" +
                         "Preço: R$ %.2f\n",
                 this.getNome(),

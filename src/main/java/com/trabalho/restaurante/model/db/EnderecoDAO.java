@@ -12,15 +12,15 @@ public class EnderecoDAO {
     }
 
     public int inserir(Endereco endereco) throws SQLException {
-        String sql = "INSERT INTO endereco (cep, cidade, bairro, rua, numero, estado) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO endereco (numero, rua, barirro, cidade, estado, cep) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        stmt.setString(1, endereco.getCep());
-        stmt.setString(2, endereco.getCidade());
+        stmt.setInt(1, endereco.getNumero());
+        stmt.setString(2, endereco.getRua());
         stmt.setString(3, endereco.getBairro());
-        stmt.setString(4, endereco.getRua());
-        stmt.setString(5, endereco.getNumero());
-        stmt.setString(6, endereco.getEstado());
+        stmt.setString(4, endereco.getCidade());
+        stmt.setString(5, endereco.getEstado());
+        stmt.setString(6, endereco.getCep());
 
         stmt.executeUpdate();
 
@@ -41,12 +41,12 @@ public class EnderecoDAO {
 
         ResultSet resultado = stmt.executeQuery();
         if (resultado.next()) {
-            String cep = resultado.getString("cep");
-            String cidade = resultado.getString("cidade");
-            String bairro = resultado.getString("bairro");
+            int numero = resultado.getInt("numero");
             String rua = resultado.getString("rua");
-            String numero = resultado.getString("numero");
+            String bairro = resultado.getString("bairro");
+            String cidade = resultado.getString("cidade");
             String estado = resultado.getString("estado");
+            String cep = resultado.getString("cep");
 
             return new Endereco(id, numero, rua, bairro, cidade, estado, cep);
         } else {
@@ -55,15 +55,15 @@ public class EnderecoDAO {
     }
 
     public boolean atualizar(Endereco endereco) throws SQLException {
-        String sql = "UPDATE endereco SET rua = ?, numero = ?, cep = ?, cidade = ?, estado = ?, bairro = ? WHERE id = ?";
+        String sql = "UPDATE endereco SET  numero = ?, rua = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
 
-        stmt.setString(1, endereco.getRua());
-        stmt.setString(2, endereco.getNumero());
-        stmt.setString(3, endereco.getCep());
+        stmt.setInt(1, endereco.getNumero());
+        stmt.setString(2, endereco.getRua());
+        stmt.setString(3, endereco.getBairro());
         stmt.setString(4, endereco.getCidade());
         stmt.setString(5, endereco.getEstado());
-        stmt.setString(6, endereco.getBairro());
+        stmt.setString(6, endereco.getCep());
         stmt.setInt(7, endereco.getId());
 
         int linhasAfetadas = stmt.executeUpdate();

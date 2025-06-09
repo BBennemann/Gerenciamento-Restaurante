@@ -1,24 +1,22 @@
 package com.trabalho.restaurante.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class Endereco {
     private int id;
-    private String numero;
+    private int numero;
     private String rua;
     private String bairro;
     private String cidade;
     private String estado;
     private String cep;
 
-    public Endereco() {
-    }
-
-    public Endereco(int id, String numero, String rua, String bairro, String cidade, String estado, String cep) {
-        this.id = id;
+    public Endereco(int numero, String rua, String bairro, String cidade, String estado, String cep) {
         this.numero = numero;
         this.rua = rua;
         this.bairro = bairro;

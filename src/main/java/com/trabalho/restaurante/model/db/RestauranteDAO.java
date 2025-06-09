@@ -18,8 +18,8 @@ public class RestauranteDAO {
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, restaurante.getNome());
-        stmt.setString(2, String.valueOf(restaurante.getAvaliacao()));
-        stmt.setString(3, String.valueOf(restaurante.getEndereco().getId()));
+        stmt.setInt(2, restaurante.getAvaliacao());
+        stmt.setInt(3, restaurante.getEndereco().getId());
 
         stmt.executeUpdate();
 
