@@ -15,7 +15,7 @@ public class ClienteDAO  {
 
     public int inserir(Cliente cliente) throws SQLException {
 
-        String sql = "INSERT INTO cliente (nome, idade, email, senha, endereco_id) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO clientes (nome, idade, email, senha, endereco_id) VALUES (?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, cliente.getNome());
@@ -38,7 +38,7 @@ public class ClienteDAO  {
     public Cliente selecionarID(int id) throws SQLException, ClassNotFoundException {
         EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-        String sql = "SELECT * from cliente WHERE id = ?";
+        String sql = "SELECT * from clientes WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
 
@@ -60,7 +60,7 @@ public class ClienteDAO  {
     public Cliente login(String email, String senha) throws SQLException, ClassNotFoundException {
         EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-        String sql = "SELECT * from cliente WHERE email = ? and senha = ?";
+        String sql = "SELECT * from clientes WHERE email = ? and senha = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, email);
         stmt.setString(2, senha);

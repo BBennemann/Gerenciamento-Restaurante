@@ -16,7 +16,7 @@ public class BebidaDAO {
 
     public int inserir(Bebida bebida) throws SQLException {
 
-        String sql = "INSERT INTO bebida (nome, preco, isAcoolica, volume, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO bebidas (nome, preco, isAcoolica, volume, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, bebida.getNome());
@@ -38,7 +38,7 @@ public class BebidaDAO {
     }
 
     public Bebida selecionarById(int id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * from bebida WHERE id = ?";
+        String sql = "SELECT * from bebidas WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
 
@@ -59,7 +59,7 @@ public class BebidaDAO {
 
     public List<Bebida> selecionarAll() throws SQLException, ClassNotFoundException {
 
-        String sql = "SELECT * from bebida";
+        String sql = "SELECT * from bebidas";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet resultado = stmt.executeQuery();
 

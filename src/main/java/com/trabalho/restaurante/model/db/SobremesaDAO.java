@@ -16,7 +16,7 @@ public class SobremesaDAO {
 
     public int inserir(Sobremesa sobremesa) throws SQLException {
 
-        String sql = "INSERT INTO bebida (nome, preco, temacucar, peso, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO sobremesas (nome, preco, temAcucar, peso, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, sobremesa.getNome());
@@ -38,7 +38,7 @@ public class SobremesaDAO {
     }
 
     public Sobremesa selecionarById(int id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * from sobremesa WHERE id = ?";
+        String sql = "SELECT * from sobremesas WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
 
@@ -46,12 +46,12 @@ public class SobremesaDAO {
         if (resultado.next()) {
             String nome = resultado.getString("nome");
             double preco = resultado.getDouble("preco");
-            boolean temacucar = resultado.getBoolean("temAcucar");
+            boolean temAcucar = resultado.getBoolean("temAcucar");
             double peso = resultado.getDouble("peso");
             String imagens = resultado.getString("imagens");
             double avaliacao = resultado.getDouble("avaliacao");
 
-            return new Sobremesa(id, nome, preco, temacucar, peso, imagens, avaliacao);
+            return new Sobremesa(id, nome, preco, temAcucar, peso, imagens, avaliacao);
         } else {
             return null;
         }
@@ -59,7 +59,7 @@ public class SobremesaDAO {
 
     public List<Sobremesa> selecionarAll() throws SQLException, ClassNotFoundException {
 
-        String sql = "SELECT * from sobremesa";
+        String sql = "SELECT * from sobremesas";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet resultado = stmt.executeQuery();
 
@@ -68,12 +68,12 @@ public class SobremesaDAO {
             int id = resultado.getInt("id");
             String nome = resultado.getString("nome");
             double preco = resultado.getDouble("preco");
-            boolean temacucar = resultado.getBoolean("temAcucar");
+            boolean temAcucar = resultado.getBoolean("temAcucar");
             double peso = resultado.getDouble("peso");
             String imgens = resultado.getString("imagens");
             double avaliacao = resultado.getDouble("avaliacao");
 
-            Sobremesa sobremesa =  new Sobremesa(id, nome, preco, temacucar ,peso  , imgens, avaliacao);
+            Sobremesa sobremesa =  new Sobremesa(id, nome, preco, temAcucar ,peso  , imgens, avaliacao);
             listaSobremesas.add(sobremesa);
         }
         return listaSobremesas;

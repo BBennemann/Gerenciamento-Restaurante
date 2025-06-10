@@ -14,7 +14,7 @@ public class RestauranteDAO {
 
     public int inserir(Restaurante restaurante) throws SQLException {
 
-        String sql = "INSERT INTO restaurante (nome, avaliacao, endereco) VALUES (?,?,?)";
+        String sql = "INSERT INTO restaurantes (nome, avaliacao, endereco) VALUES (?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, restaurante.getNome());
@@ -35,7 +35,7 @@ public class RestauranteDAO {
     public Restaurante selecionar(int id) throws SQLException, ClassNotFoundException {
         EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-        String sql = "SELECT * from restaurante WHERE id = ?";
+        String sql = "SELECT * from restaurantes WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
 

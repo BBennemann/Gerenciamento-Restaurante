@@ -1,0 +1,61 @@
+CREATE DATABASE restaurantedb
+USE restaurantedb
+
+CREATE TABLE enderecos(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    numero INT NOT NULL,
+    rua VARCHAR(255) NOT NULL,
+    bairro VARCHAR(255) NOT NULL,
+    cidade VARCHAR(255) NOT NULL,
+    estado VARCHAR(255) NOT NULL,
+    cep VARCHAR(8) NOT NULL
+);
+
+CREATE TABLE clientes (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    idade INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    endereco INT NOT NULL,
+    FOREIGN KEY (endereco) REFERENCES enderecos(id)
+);
+
+CREATE TABLE restaurantes (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    endereco INT NOT NULL,
+    FOREIGN KEY (endereco) REFERENCES enderecos(id)
+);
+
+CREATE TABLE bebidas(
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+    preco DOUBLE NOT NULL,
+    isAlcoolica BOOLEAN NOT NULL,
+    volume INT NOT NULL,
+    imagem VARCHAR(255) NOT NULL,
+    avaliacao DOUBLE NOT NULL
+);
+
+CREATE TABLE sobremesas(
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+    preco DOUBLE NOT NULL,
+    temAcucar BOOLEAN NOT NULL,
+    peso DOUBLE NOT NULL,
+    imagem VARCHAR(255) NOT NULL,
+    avaliacao DOUBLE NOT NULL
+);
+
+CREATE TABLE bebidas(
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+    preco DOUBLE NOT NULL,
+    acompanhamento VARCHAR(255) NOT NULL,
+    isVegan BOOLEAN NOT NULL,
+    imagem VARCHAR(255) NOT NULL,
+    avaliacao DOUBLE NOT NULL
+);

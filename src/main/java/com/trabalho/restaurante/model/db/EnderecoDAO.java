@@ -12,7 +12,7 @@ public class EnderecoDAO {
     }
 
     public int inserir(Endereco endereco) throws SQLException {
-        String sql = "INSERT INTO endereco (numero, rua, barirro, cidade, estado, cep) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO enderecos (numero, rua, barirro, cidade, estado, cep) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setInt(1, endereco.getNumero());
@@ -35,7 +35,7 @@ public class EnderecoDAO {
 
 
     public Endereco selecionar(int id) throws SQLException {
-        String sql = "SELECT * FROM endereco WHERE id = ?";
+        String sql = "SELECT * FROM enderecos WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
 
@@ -55,7 +55,7 @@ public class EnderecoDAO {
     }
 
     public boolean atualizar(Endereco endereco) throws SQLException {
-        String sql = "UPDATE endereco SET  numero = ?, rua = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id = ?";
+        String sql = "UPDATE enderecos SET  numero = ?, rua = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
 
         stmt.setInt(1, endereco.getNumero());
@@ -74,7 +74,7 @@ public class EnderecoDAO {
 
 
     public boolean deletar(Endereco endereco) throws SQLException {
-        String sql = "DELETE FROM endereco WHERE id = ?";
+        String sql = "DELETE FROM enderecos WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
 
         stmt.setInt(1, endereco.getId());

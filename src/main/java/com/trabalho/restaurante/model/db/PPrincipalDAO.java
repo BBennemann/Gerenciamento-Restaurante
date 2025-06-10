@@ -17,7 +17,7 @@ public class PPrincipalDAO {
 
     public int inserir(PratoPrincipal pratoPrincipal) throws SQLException {
 
-        String sql = "INSERT INTO bebida (nome, preco, acompanhamento, isvegan, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO pratosPrincipais (nome, preco, acompanhamento, isVegan, imagem, avaliacao) VALUES (?,?,?,?,?,?)";
 
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, pratoPrincipal.getNome());
@@ -39,7 +39,7 @@ public class PPrincipalDAO {
     }
 
     public PratoPrincipal selecionarById(int id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * from pratoprincipal WHERE id = ?";
+        String sql = "SELECT * from pratosPrincipais WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
 
@@ -48,7 +48,7 @@ public class PPrincipalDAO {
             String nome = resultado.getString("nome");
             double preco = resultado.getDouble("preco");
             String acompanhamento = resultado.getString("acompanhamento");
-            boolean isVegan = resultado.getBoolean("isvegan");
+            boolean isVegan = resultado.getBoolean("isVegan");
             String imagens = resultado.getString("imagens");
             double avaliacao = resultado.getDouble("avaliacao");
 
@@ -60,7 +60,7 @@ public class PPrincipalDAO {
 
     public List<PratoPrincipal> selecionarAll() throws SQLException, ClassNotFoundException {
 
-        String sql = "SELECT * from pratoprincipal";
+        String sql = "SELECT * from pratosPrincipais";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet resultado = stmt.executeQuery();
 
@@ -70,11 +70,11 @@ public class PPrincipalDAO {
             String nome = resultado.getString("nome");
             double preco = resultado.getDouble("preco");
             String acompanhamento = resultado.getString("acompanhamento");
-            boolean isvegan = resultado.getBoolean("isVegan");
+            boolean isVegan = resultado.getBoolean("isVegan");
             String imagens = resultado.getString("imagens");
             double avaliacao = resultado.getDouble("avaliacao");
 
-            PratoPrincipal pratoPrincipal =  new PratoPrincipal( id, nome, preco, acompanhamento, isvegan, imagens, avaliacao);
+            PratoPrincipal pratoPrincipal =  new PratoPrincipal( id, nome, preco, acompanhamento, isVegan, imagens, avaliacao);
             listaPratoPrincipal.add(pratoPrincipal);
         }
         return listaPratoPrincipal;
