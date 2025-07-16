@@ -1,27 +1,25 @@
 package com.trabalho.restaurante.model;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Sobremesa extends Pratos{
+@NoArgsConstructor
+@Entity
+@DiscriminatorValue("SOBREMESA")
+public class Sobremesa extends Pratos {
+
     private boolean temAcucar;
     private double peso;
-
-
-    public Sobremesa(int id, String nome, double preco, boolean temAcucar, double peso, String imagens, double avaliacao) {
-        super(id, nome, preco, imagens, avaliacao);
-        this.temAcucar = temAcucar;
-        this.peso = peso;
-
-    }
 
     public Sobremesa(String nome, double preco, boolean temAcucar, double peso, String imagens, double avaliacao) {
         super(nome, preco, imagens, avaliacao);
         this.temAcucar = temAcucar;
         this.peso = peso;
-
     }
 
     @Override

@@ -1,26 +1,27 @@
 package com.trabalho.restaurante.model;
 
-
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Pratos {
-    private int id;
+@NoArgsConstructor
+@Entity
+@Table(name = "pratos")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_prato", discriminatorType = DiscriminatorType.STRING)
+public abstract class Pratos {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nome;
     private double preco;
     private String imagens;
     private double avaliacao;
-
-    public Pratos(int id, String nome, double preco, String imagens, double avaliacao) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-        this.imagens = imagens;
-        this.avaliacao = avaliacao;
-    }
 
     public Pratos(String nome, double preco, String imagens, double avaliacao) {
         this.nome = nome;
@@ -29,7 +30,5 @@ public class Pratos {
         this.avaliacao = avaliacao;
     }
 
-    public String descricao() {
-        return  nome + " custa: R$"+preco;
-    }
+    public abstract String descricao();
 }
