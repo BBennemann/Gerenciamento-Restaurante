@@ -9,7 +9,7 @@ public class RestauranteDAO {
     private Connection conexao;
 
     public RestauranteDAO() throws ClassNotFoundException, SQLException {
-        conexao = ConexaoDB.getConexao();
+        //conexao = ConexaoDB.getConexao();
     }
 
     public int inserir(Restaurante restaurante) throws SQLException {
@@ -19,7 +19,7 @@ public class RestauranteDAO {
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, restaurante.getNome());
         stmt.setInt(2, restaurante.getAvaliacao());
-        stmt.setInt(3, restaurante.getEndereco().getId());
+        //stmt.setInt(3, restaurante.getEndereco().getId());
 
         stmt.executeUpdate();
 
@@ -33,7 +33,7 @@ public class RestauranteDAO {
     }
 
     public Restaurante selecionar(int id) throws SQLException, ClassNotFoundException {
-        EnderecoDAO enderecoDAO = new EnderecoDAO();
+        //EnderecoDAO enderecoDAO = new EnderecoDAO();
 
         String sql = "SELECT * from restaurantes WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -44,8 +44,9 @@ public class RestauranteDAO {
             String nome = resultado.getString("nome");
             int avaliacao = resultado.getInt("avaliacao");
             int idEndereco = resultado.getInt("endereco");
-            Endereco endereco = enderecoDAO.selecionar(idEndereco);
-            return new Restaurante(id, nome, avaliacao, endereco);
+            //Endereco endereco = enderecoDAO.selecionar(idEndereco);
+            //return new Restaurante(id, nome, avaliacao, endereco);4
+            return null;
         } else {
             return null;
         }
